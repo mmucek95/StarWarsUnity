@@ -8,6 +8,8 @@ public class SpaceShipController : MonoBehaviour {
     public float maxForce = 0f;
     public ParticleSystem upperLeft, upperRight, upperMiddleLeft, upperMiddleRight,
         downMiddleLeft, downMiddleRight, downLeft, downRight;
+
+    
 	// Use this for initialization
 	void Start () {
         upperLeft.enableEmission = false;

@@ -6,10 +6,11 @@ public class MissleController : MonoBehaviour {
     public float missleSpeed = 1.0f, missleAcceleration = 1.0f;
     public RaycastHit hit;
     bool left;
+    public ParticleSystem explosion;
 
-	// Use this for initialization
-	void Start () {
-	
+    // Use this for initialization
+    void Start () {
+        StartCoroutine(AutoDestruct(10));
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,7 @@ public class MissleController : MonoBehaviour {
         missleSpeed += missleAcceleration * Time.deltaTime;
         Debug.DrawRay(this.gameObject.transform.position, Vector3.up);
 
-        if(Physics.Raycast(this.gameObject.transform.position, this.gameObject.transform.up, out hit, 0.5f))
+        if(Physics.Raycast(this.gameObject.transform.position + new Vector3(-15, 0, 0), this.gameObject.transform.up, out hit, 1.0f))
         {
             Explosion();
         }
@@ -26,6 +27,12 @@ public class MissleController : MonoBehaviour {
 
     void Explosion()
     {
+        Instantiate(explosion, this.transform.position, Quaternion.Euler(90, 90, 0));
         Destroy(this.gameObject);
+    }
+
+    public IEnumerator AutoDestruct(int time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }
