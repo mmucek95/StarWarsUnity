@@ -8,8 +8,6 @@ public class SpaceShipController : MonoBehaviour {
     public float maxForce = 0f;
     public ParticleSystem upperLeft, upperRight, upperMiddleLeft, upperMiddleRight,
         downMiddleLeft, downMiddleRight, downLeft, downRight;
-
-    
 	// Use this for initialization
 	void Start () {
         upperLeft.enableEmission = false;
@@ -78,22 +76,22 @@ public class SpaceShipController : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.T))
         {
-            Instantiate(missle, this.transform.position + new Vector3(0,50, 0), Quaternion.Euler(0, 0, 0));
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Instantiate(missle, this.transform.position + new Vector3(0, -50, 0), Quaternion.Euler(180, 90, 0));
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Instantiate(missle, this.transform.position + new Vector3(50, 0, 0), Quaternion.Euler(90, 90, 0));
+            Instantiate(missle, this.transform.position + new Vector3(0, 0.1f , 0), Quaternion.Euler(0, 0, 0));
         }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Instantiate(missle, this.transform.position + new Vector3(-50, 0, 0), Quaternion.Euler(270, 90, 0));
+            Instantiate(missle, this.transform.position + new Vector3(0, -0.1f, 0), Quaternion.Euler(180, 90, 0));
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Instantiate(missle, this.transform.position + new Vector3(0.1f, 0, 0), Quaternion.Euler(90, 90, 0));
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(missle, this.transform.position + new Vector3(-0.1f, 0, 0), Quaternion.Euler(270, 90, 0));
         }
     }
 }
